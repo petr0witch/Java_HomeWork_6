@@ -25,7 +25,6 @@ public class Main {
         Map<Integer, Double> inches = new HashMap<>();
 
         enter();
-        System.out.println(getAll(1, 512));
     }
     // 3. Метод enter() используется для запроса критерия фильтрации и мин. значения
     public static void enter() {
@@ -60,7 +59,7 @@ public class Main {
         Map<Integer, Integer> mem = new HashMap<>();
         System.out.println(getAll(x, a).values());
         for (Integer item : getAll(x, a).values()) {
-            if(a < item){
+            if(a <= item){
                 mem.put(i, item);
                 i++;
             }
