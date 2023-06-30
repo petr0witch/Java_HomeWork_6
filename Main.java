@@ -56,16 +56,16 @@ public class Main {
 
     public static Map<Integer, Integer> check(int x, int a){
         int i = 1;
-        Map<Integer, Integer> mem = new HashMap<>();
+        Map<Integer, Integer> temp = new HashMap<>();
         System.out.println(getAll(x, a).values());
         for (Integer item : getAll(x, a).values()) {
             if(a <= item){
-                mem.put(i, item);
+                temp.put(i, item);
                 i++;
             }
         }
-        System.out.println("Список соответствия: " + mem.values());
-        return mem;
+        System.out.println("Список соответствия: " + temp.values());
+        return temp;
     }
     // 4. Метод должен идти по ноутбукам и сравнивает их хар-ки с заданными критериями.
     public static HashMap<Integer, Integer> getAll(int x, int a) {
