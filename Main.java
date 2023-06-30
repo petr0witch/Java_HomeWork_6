@@ -44,11 +44,12 @@ public class Main {
             if(input == 2){
                 System.out.print("Введите минимальное значение RAM: ");
                 int input1 = sc.nextInt();
-
+                check(input,input1);
             }
             if(input == 3){
                 System.out.print("Введите минимальное значение диагонали: ");
                 int input1 = sc.nextInt();
+                check(input,input1);
             }
             else enter();
         }
@@ -64,14 +65,16 @@ public class Main {
                 i++;
             }
         }
-        System.out.println("Список соответствия: " + mem);
+        System.out.println("Список соответствия: " + mem.values());
         return mem;
     }
     // 4. Метод должен идти по ноутбукам и сравнивает их хар-ки с заданными критериями.
     public static HashMap<Integer, Integer> getAll(int x, int a) {
         Notebook[] notebooks = Laps();
+        HashMap<Integer, Integer> memory = new HashMap<>();
+        HashMap<Integer, Integer> ram = new HashMap<>();
+        HashMap<Integer, Integer> inch = new HashMap<>();
         if (x == 1) {
-            HashMap<Integer, Integer> memory = new HashMap<>();
             System.out.println("Список всех значений памяти:");
             for (int i = 0; i < Laps().length; i++) {
                 Notebook notebook = notebooks[i];
@@ -79,20 +82,13 @@ public class Main {
             }
             return memory;
         } else if (x == 2) {
-            HashMap<Integer, Integer> ram = new HashMap<>();
             System.out.println("Список всех значений памяти:");
             for (int i = 0; i < Laps().length; i++) {
                 Notebook notebook = notebooks[i];
                 ram.put(i + 1, notebook.getRam());
             }
             return ram;
-        }
-        return null;
-    }
-    public static HashMap<Integer, Double> getAllInches(int a) {
-        Notebook[] notebooks = Laps();
-        if (a == 3) {
-            HashMap<Integer, Double> inch = new HashMap<>();
+        } else if (x == 3) {
             System.out.println("Список всех значений памяти:");
             for (int i = 0; i < Laps().length; i++) {
                 Notebook notebook = notebooks[i];
@@ -111,7 +107,7 @@ public class Main {
         lap1.setBrand("Asus");
         lap1.setModel("Laptop 15 D543MA-DM1369");
         lap1.setProcessor("Intel Pentium N5030");
-        lap1.setInches(15.6);
+        lap1.setInches(16);
         lap1.setMemory(1000);
         lap1.setRam(4);
         lap1.setTypeOS(null);
@@ -122,7 +118,7 @@ public class Main {
         lap2.setBrand("Honor");
         lap2.setModel("MagicBook X 15");
         lap2.setProcessor("Intel Core i3-10110U");
-        lap2.setInches(15.6);
+        lap2.setInches(16);
         lap2.setMemory(256);
         lap2.setRam(8);
         lap2.setTypeOS("Windows");
@@ -133,7 +129,7 @@ public class Main {
         lap3.setBrand("Huawei");
         lap3.setModel("MateBook D 14");
         lap3.setProcessor("Intel Core i3-1115G4");
-        lap3.setInches(14.0);
+        lap3.setInches(14);
         lap3.setMemory(256);
         lap3.setRam(8);
         lap3.setTypeOS("Windows");
@@ -144,7 +140,7 @@ public class Main {
         lap4.setBrand("Xiaomi");
         lap4.setModel("RedmiBook 15");
         lap4.setProcessor("Intel Core i5-11320H");
-        lap4.setInches(15.6);
+        lap4.setInches(16);
         lap4.setMemory(512);
         lap4.setRam(8);
         lap4.setTypeOS("Windows");
@@ -155,7 +151,7 @@ public class Main {
         lap5.setBrand("Apple");
         lap5.setModel("MacBook Air");
         lap5.setProcessor("Apple M1");
-        lap5.setInches(13.3);
+        lap5.setInches(13);
         lap5.setMemory(256);
         lap5.setRam(8);
         lap5.setTypeOS("macOS");

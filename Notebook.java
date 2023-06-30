@@ -9,7 +9,7 @@ public class Notebook {
     private String typeOS;
     private int price;
 
-    public Notebook(String brand, String model, double inches, int memory, String processor, int ram, String typeOS, int price) {
+    public Notebook(String brand, String model, int inches, int memory, String processor, int ram, String typeOS, int price) {
         this.brand = brand;
         this.model = model;
         this.inches = inches;
@@ -40,11 +40,11 @@ public class Notebook {
         this.model = model;
     }
 
-    public double getInches() {
-        return inches;
+    public int getInches() {
+        return (int) inches;
     }
 
-    public void setInches(double inches) {
+    public void setInches(int inches) {
         this.inches = inches;
     }
 
