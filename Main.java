@@ -38,7 +38,8 @@ public class Main {
             if(input == 1){
                 System.out.print("Введите минимальное значение памяти: ");
                 int input1 = sc.nextInt();
-
+                check(input1);
+                //if (input1 > getAll(input1))
             }
             if(input == 2){
                 System.out.print("Введите минимальное значение RAM: ");
@@ -48,10 +49,26 @@ public class Main {
             if(input == 3){
                 System.out.print("Введите минимальное значение диагонали: ");
                 int input1 = sc.nextInt();
-
             }
             else enter();
         }
+    }
+
+    public static Map<Integer, Integer> check(int a){
+        int i = 1;
+        Map<Integer, Integer> mem = new HashMap<>();
+        System.out.println(getAll().values());
+        for (Integer item : getAll().values()) {
+            if(a > item){
+                mem.put(i, item);
+                i++;
+            } else {
+                mem.put(i, item);
+                i++;
+            }
+        }
+        System.out.println(mem);
+        return mem;
     }
     // 4. Метод должен идти по ноутбукам и сравнивает их хар-ки с заданными критериями.
     public static HashMap<Integer, Integer> getAll() {
@@ -64,6 +81,7 @@ public class Main {
             memory.put(i + 1, notebook.getMemory());
         }
         return memory;
+
     }
 
 
