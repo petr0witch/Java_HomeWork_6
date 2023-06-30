@@ -25,7 +25,7 @@ public class Main {
         Map<Integer, Double> inches = new HashMap<>();
 
         enter();
-        System.out.println(getAll());
+        System.out.println(getAll(1, 512));
     }
     // 3. Метод enter() используется для запроса критерия фильтрации и мин. значения
     public static void enter() {
@@ -38,7 +38,7 @@ public class Main {
             if(input == 1){
                 System.out.print("Введите минимальное значение памяти: ");
                 int input1 = sc.nextInt();
-                check(input1);
+                check(input,input1);
                 //if (input1 > getAll(input1))
             }
             if(input == 2){
@@ -54,36 +54,54 @@ public class Main {
         }
     }
 
-    public static Map<Integer, Integer> check(int a){
+    public static Map<Integer, Integer> check(int x, int a){
         int i = 1;
         Map<Integer, Integer> mem = new HashMap<>();
-        System.out.println(getAll().values());
-        for (Integer item : getAll().values()) {
-            if(a > item){
-                mem.put(i, item);
-                i++;
-            } else {
+        System.out.println(getAll(x, a).values());
+        for (Integer item : getAll(x, a).values()) {
+            if(a < item){
                 mem.put(i, item);
                 i++;
             }
         }
-        System.out.println(mem);
+        System.out.println("Список соответствия: " + mem);
         return mem;
     }
     // 4. Метод должен идти по ноутбукам и сравнивает их хар-ки с заданными критериями.
-    public static HashMap<Integer, Integer> getAll() {
+    public static HashMap<Integer, Integer> getAll(int x, int a) {
         Notebook[] notebooks = Laps();
-
-        HashMap<Integer, Integer> memory = new HashMap<>();
-        System.out.println("Список всех значений памяти:");
-        for (int i = 0; i < Laps().length; i++) {
-            Notebook notebook = notebooks[i];
-            memory.put(i + 1, notebook.getMemory());
+        if (x == 1) {
+            HashMap<Integer, Integer> memory = new HashMap<>();
+            System.out.println("Список всех значений памяти:");
+            for (int i = 0; i < Laps().length; i++) {
+                Notebook notebook = notebooks[i];
+                memory.put(i + 1, notebook.getMemory());
+            }
+            return memory;
+        } else if (x == 2) {
+            HashMap<Integer, Integer> ram = new HashMap<>();
+            System.out.println("Список всех значений памяти:");
+            for (int i = 0; i < Laps().length; i++) {
+                Notebook notebook = notebooks[i];
+                ram.put(i + 1, notebook.getRam());
+            }
+            return ram;
         }
-        return memory;
-
+        return null;
     }
-
+    public static HashMap<Integer, Double> getAllInches(int a) {
+        Notebook[] notebooks = Laps();
+        if (a == 3) {
+            HashMap<Integer, Double> inch = new HashMap<>();
+            System.out.println("Список всех значений памяти:");
+            for (int i = 0; i < Laps().length; i++) {
+                Notebook notebook = notebooks[i];
+                inch.put(i + 1, notebook.getInches());
+            }
+            return inch;
+        }
+        return null;
+    }
 
     // 2. В методе main() создаются экземпляры класса Notebook
     public static Notebook[] Laps() {
